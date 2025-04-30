@@ -36,15 +36,17 @@ select count(*) as Total_loan_application from financial_loan;
 select count(*) as Total_MTD_loan_application from financial_loan
 where month(issue_date) = 12;
 
+
+
 -- 3. PMTD Loan :(previous month to date or previous month)
 
-select * from financial_loan;
 select count(*) as Total_PMTD_loan_application from financial_loan
 where month(issue_date) = 11;
 
+
 -- 4. Total Funded Amount:
-select * from financial_loan;
 select sum(loan_amount) as Total_Amt_Funded from financial_loan;
+
 
 -- 5. MTD Total Funded Amount:
 select sum(loan_amount) as Total_MTD_Amt_Funded from financial_loan
@@ -56,17 +58,22 @@ select sum(loan_amount) as Total_PMTD_Amt_Funded from financial_loan
 where month(issue_date)=11;
 
 
+
 -- 7. Total Amount Received:
 select sum(total_payment) as Total_Amt_Receive from financial_loan;
+
 
 
 -- 8. MTD Total Amount Received:
 select sum(total_payment) as Total_MTD_Amt_Receive from financial_loan
 where month(issue_date)=12;
 
+
+
 -- 9. PMTD Total Amount Received:
 select sum(total_payment) as Total_PMTD_Amt_Receive from financial_loan
 where month(issue_date)=11;
+
 
 
 -- 10.Average Interest Rate:
@@ -74,10 +81,12 @@ select * from financial_loan;
 select round(avg(int_rate),2) *100 as Avg_int_rate from financial_loan;
 
 
+
 -- 11. MTD Average Interest:
 select round(avg(int_rate),2) *100 as Avg_MTD_int_rate 
 from financial_loan
 where month(issue_date)=12;
+
 
 
 -- 12. PMTD Average Interest:
@@ -90,18 +99,20 @@ where month(issue_date)=11;
 -- 13. Avg DTI
 select avg(dti)* 100 as Avg_DTI from financial_loan;			
 
+
+
 -- 14. MTD Avg DTI
 select avg(dti)* 100 as Avg_DTI_MTD
 from financial_loan
 where month(issue_date)=12;			
 
 
-
-
 -- 15. PMTD Avg DTI
 select avg(dti)* 100 as Avg_DTI_PMTD
 from financial_loan
 where month(issue_date)=11 ;	
+
+
 
 -- 16. Good Loan Percentage :
 select * from financial_loan;
@@ -111,6 +122,7 @@ select (good_loan/total_loan)*100 as Total_percentage_good_loan from
 from financial_loan
 where loan_status =  'Fully Paid' or loan_status ='Current')as loan_type,
 (select count(loan_status) as total_loan from financial_loan) as total_amt;
+    
     
     
    -- 17. Good Loan Applications:
