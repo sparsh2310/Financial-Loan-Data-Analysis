@@ -175,7 +175,7 @@ sum(total_payment) as Total_amt_receive,
 avg(int_rate) as Average_interest_rate,
 avg(dti) as Avregae_DTI
  from financial_loan
- group by 1;
+ group by loan_status;
  
  -- for MTD
  select loan_status, 
@@ -185,7 +185,7 @@ avg(int_rate) as Average_MTD_interest_rate,
 avg(dti) as Avregae_MTD_DTI
  from financial_loan
  where month(issue_date)=12
- group by 1;
+ group by loan_status;
 
 -- 25. BANK LOAN REPORT | OVERVIEW
 select month( issue_date) as Month_No , 
@@ -193,8 +193,8 @@ count(id) as Total_loan_applications,
 sum(loan_amount) as total_loan_amt_funded,
 sum(total_payment) as Total_amt_receive 
 from financial_loan
-group by 1
-order by 1;
+group by Month_No
+order by Month_No;
 
 
 -- 26.  same as above on basis of state:
@@ -204,8 +204,8 @@ count(id) as Total_loan_applications,
 sum(loan_amount) as total_loan_amt_funded,
 sum(total_payment) as Total_amt_receive 
 from financial_loan
-group by 1
-order by 1;
+group by address_state
+order by address_state;
 
 -- 27. same as above on basis of term:
 select term  , 
@@ -213,8 +213,8 @@ count(id) as Total_loan_applications,
 sum(loan_amount) as total_loan_amt_funded,
 sum(total_payment) as Total_amt_receive 
 from financial_loan
-group by 1
-order by 1;
+group by term
+order by term;
 
 -- 28. same as above on basis of emp_length:
 
@@ -223,8 +223,8 @@ count(id) as Total_loan_applications,
 sum(loan_amount) as total_loan_amt_funded,
 sum(total_payment) as Total_amt_receive 
 from financial_loan
-group by 1
-order by 1;
+group by emp_length
+order by emp_length;
 
 
 -- 29. PURPOSE
@@ -233,8 +233,8 @@ count(id) as Total_loan_applications,
 sum(loan_amount) as total_loan_amt_funded,
 sum(total_payment) as Total_amt_receive 
 from financial_loan
-group by 1
-order by 1;
+group by purpose
+order by purpose;
 
 
 
